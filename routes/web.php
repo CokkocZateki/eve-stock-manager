@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'AppController@home');
 
+// Handle EVE SSO requests and callbacks.
 Route::get('/login', 'Auth\AuthController@redirectToProvider');
-
 Route::get('/callback', 'Auth\AuthController@handleProviderCallback');
+
+Route::get('/logout', 'AppController@logout');
