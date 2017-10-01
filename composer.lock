@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "47ab87bbc0b8c3e91336b294fc2e3de8",
+    "content-hash": "05b5b5216e772a7171ec76f4b3b2aa87",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1212,6 +1212,57 @@
                 "php"
             ],
             "time": "2017-09-02T17:10:46+00:00"
+        },
+        {
+            "name": "nullx27/esi-php",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nullx27/esi-php.git",
+                "reference": "894e256b67272817ad5efbaa21c69cf0a28c2d70"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nullx27/esi-php/zipball/894e256b67272817ad5efbaa21c69cf0a28c2d70",
+                "reference": "894e256b67272817ad5efbaa21c69cf0a28c2d70",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "~1.12",
+                "phpunit/phpunit": "~4.8",
+                "satooshi/php-coveralls": "~1.0",
+                "squizlabs/php_codesniffer": "~2.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "nullx27\\ESI\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "Swagger and contributors",
+                    "homepage": "https://github.com/swagger-api/swagger-codegen"
+                }
+            ],
+            "description": "EVE Online ESI Api Client for PHP",
+            "keywords": [
+                "api",
+                "php",
+                "sdk",
+                "swagger"
+            ],
+            "time": "2017-03-27T13:05:55+00:00"
         },
         {
             "name": "nullx27/eveonline-socialite",

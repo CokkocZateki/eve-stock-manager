@@ -26,6 +26,22 @@ class AuthController extends Controller
     {
         $user = Socialite::driver('eveonline')->user();
 
-        dd($user);
+        // Retrieve the character's corporation.
+        $api_instance = new \nullx27\ESI\Api\CharacterApi();
+        $characterId = $user->getId();
+        
+        try {
+            $result = $api_instance->getCharactersCharacterId($characterId);
+            $api_instance = new \nullx27\ESI\Api\CorporationApi();
+            $corporationId = $result['corporationId'];
+            try {
+                $result = $api_instance->getCorporationsCorporationId($corporationId);
+                echo 'Character is in ' . $result['corporationName'];
+            } catch (Exception $e) {
+                echo 'Exception when calling CorporationApi->getCorporationsCorporationId: ', $e->getMessage(), PHP_EOL;
+            }
+        } catch (Exception $e) {
+            echo 'Exception when calling CharacterApi->getCharactersCharacterId: ', $e->getMessage(), PHP_EOL;
+        }
     }
 }
