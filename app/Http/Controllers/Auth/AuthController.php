@@ -62,12 +62,12 @@ class AuthController extends Controller
      */
      private function findOrCreateUser($user)
      {
-         if ($authUser = User::where('id', $user->id)->first()) {
+         if ($authUser = User::where('eve_id', $user->id)->first()) {
              return $authUser;
          }
  
          return User::create([
-             'id' => $user->id,
+             'eve_id' => $user->id,
              'name' => $user->name,
              'avatar' => $user->avatar,
              'token' => $user->token,
