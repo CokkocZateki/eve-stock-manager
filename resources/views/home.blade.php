@@ -14,9 +14,30 @@
 
     <body>
 
-        <p>Welcome back, {{ $user->name }}! <a href="/logout">Logout</a></p>
+        <p>
+            <img src="{{ $user->avatar }}" width="40" height="40" alt="{{ $user->name }}" style="border-radius: 20px;">
+            Welcome back, {{ $user->name }}! 
+            <a href="/logout">Logout</a>
+        </p>
 
-
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Location</th>
+                    <th>Qty</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($assets as $row)
+                    <tr>
+                        <td>{{ $row->typeName }}</td>
+                        <td>{{ $row->location_name }}</td>
+                        <td>{{ $row->quantity }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
 
     </body>
 

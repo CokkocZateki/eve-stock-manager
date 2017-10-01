@@ -17,7 +17,7 @@ class AuthController extends Controller
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('eveonline')->scopes(['esi-assets.read_corporation_assets.v1'])->redirect();
+        return Socialite::driver('eveonline')->scopes(['esi-universe.read_structures.v1', 'esi-assets.read_corporation_assets.v1'])->redirect();
     }
 
     /**
@@ -63,8 +63,10 @@ class AuthController extends Controller
      */
      private function findOrCreateUser($user)
      {
-         if ($authUser = User::where('eve_id', $user->id)->first()) {
+         if ($authUser = User::where('eve_id', $user->id)->first())
+         {
              $authUser->token = $user->token;
+             $authUser->refresh_token = $user->refreshToken;
              $authUser->save();
              return $authUser;
          }
@@ -74,6 +76,7 @@ class AuthController extends Controller
              'name' => $user->name,
              'avatar' => $user->avatar,
              'token' => $user->token,
+             'refresh_token' => $user->refreshToken,
          ]);
      }
     

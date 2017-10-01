@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Ixudra\Curl\Facades\Curl;
+use App\Asset;
+use App\Station;
 
 class AppController extends Controller
 {
@@ -24,40 +26,35 @@ class AppController extends Controller
         }
 
         // User is authenticated!
-        // Let's use their token to retrieve corporation assets.
+        $assets = Asset::join('invTypes', 'assets.typeID', '=', 'invTypes.typeID')->orderBy('quantity', 'desc')->get();
+
         \nullx27\ESI\Configuration::getDefaultConfiguration()->setAccessToken(Auth::user()->token);
 
-        $api_instance = new \nullx27\ESI\Api\CharacterApi();
-        $characterId = Auth::user()->eve_id;
-        
-        try {
-            $result = $api_instance->getCharactersCharacterId($characterId);
-            $corporationId = $result['corporationId'];
-            try {
-                $url = 'https://esi.tech.ccp.is/latest/corporations/' . $corporationId . '/assets/';
-                $response = Curl::to($url)
-                    ->withData(array(
-                        'token' => Auth::user()->token
-                    ))
-                    ->enableDebug('logFile.txt')
-                    ->get();
-                if ($response)
-                {
-                    $assets = json_decode($response);
-                    foreach ($assets as $item)
-                    {
-                        echo $item->type_id . '<br>';
-                    }
-                }
-            } catch (Exception $e) {
-                echo 'Exception when calling ' . $url, $e->getMessage(), PHP_EOL;
+        foreach ($assets as $asset)
+        {
+            $station = Station::find($asset->location);
+            if ($station)
+            {
+                $asset->location_name = $station->stationName;
             }
-        } catch (Exception $e) {
-            echo 'Exception when calling CharacterApi->getCharactersCharacterId: ', $e->getMessage(), PHP_EOL;
+            else
+            {
+                $api_instance = new \nullx27\ESI\Api\UniverseApi();
+                $structureId = $asset->location;
+                
+                try {
+                    $result = $api_instance->getUniverseStructuresStructureId($structureId);
+                    $asset->location_name = $result['name'];
+                } catch (Exception $e) {
+                    echo 'Exception when calling UniverseApi->getUniverseStructuresStructureId: ', $e->getMessage(), PHP_EOL;
+                    $asset->location_name = '---';
+                }
+            }
         }
 
         return view('home', [
             'user' => Auth::user(),
+            'assets' => $assets,
         ]);
 
     }

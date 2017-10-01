@@ -15,7 +15,7 @@
 * 	 subjectAltName: esi.tech.ccp.is matched
 * 	 issuer: C=US; O=Let's Encrypt; CN=Let's Encrypt Authority X3
 * 	 SSL certificate verify ok.
-> GET /latest/corporations/98267685/assets/?token=cyvuoOgjHbmYft9GGpIb16oMwfQPPBHvGgpURe50KSpEJyssKBJ6uP7oQP4mSiMHFSqRfFWS8M-YAyan3Y9OfQ2 HTTP/1.1
+> GET /latest/corporations/98267685/assets/?token=fvbOq9VfBe7qoFbI1F44FQisPG5K1yTK_ert9ugzXe0XnTpOa-M7rYx67SB_XfOEUzAuHxyIsCEN4sL5Rnwgeg2 HTTP/1.1
 Host: esi.tech.ccp.is
 Accept: */*
 
@@ -26,19 +26,18 @@ Accept: */*
 < Access-Control-Allow-Origin: *
 < Access-Control-Expose-Headers: Content-Type,Warning
 < Access-Control-Max-Age: 600
-< Content-Length: 487152
+< Cache-Control: public
+< Content-Length: 487758
 < Content-Type: application/json
-< Date: Sun, 01 Oct 2017 16:43:23 GMT
-< Expires: Sun, 01 Oct 2017 16:53:22 GMT
-< Last-Modified: Sun, 01 Oct 2017 16:43:22 GMT
+< Date: Sun, 01 Oct 2017 19:35:46 GMT
+< Expires: Sun, 01 Oct 2017 19:45:45 GMT
+< Last-Modified: Sun, 01 Oct 2017 19:35:45 GMT
 < Strict-Transport-Security: max-age=31536000
 < Vary: Accept-Encoding
-< X-Esi-Error-Limit-Remain: 98
-< X-Esi-Error-Limit-Reset: 39
+< X-Esi-Error-Limit-Remain: 99
+< X-Esi-Error-Limit-Reset: 16
 < X-Pages: 1
 < Via: 1.1 google
-< Cache-Control: public
-< Age: 349
 < Alt-Svc: clear
 < 
 * Connection #0 to host esi.tech.ccp.is left intact
