@@ -5,7 +5,7 @@ EVE Stock Manager is a corporation stock management application for [EVE Online]
 ## EVE SQL tables needed
 
 * invTypes
-
+* staStations
 
 ## License
 
