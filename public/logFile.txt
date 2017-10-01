@@ -1,0 +1,44 @@
+* Hostname esi.tech.ccp.is was found in DNS cache
+*   Trying 35.186.214.164...
+* Connected to esi.tech.ccp.is (35.186.214.164) port 443 (#0)
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /etc/ssl/certs/ca-certificates.crt
+  CApath: /etc/ssl/certs
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES128-GCM-SHA256
+* ALPN, server accepted to use http/1.1
+* Server certificate:
+* 	 subject: CN=esi.tech.ccp.is
+* 	 start date: Jul 26 12:57:00 2017 GMT
+* 	 expire date: Oct 24 12:57:00 2017 GMT
+* 	 subjectAltName: esi.tech.ccp.is matched
+* 	 issuer: C=US; O=Let's Encrypt; CN=Let's Encrypt Authority X3
+* 	 SSL certificate verify ok.
+> GET /latest/corporations/98267685/assets/?token=cyvuoOgjHbmYft9GGpIb16oMwfQPPBHvGgpURe50KSpEJyssKBJ6uP7oQP4mSiMHFSqRfFWS8M-YAyan3Y9OfQ2 HTTP/1.1
+Host: esi.tech.ccp.is
+Accept: */*
+
+< HTTP/1.1 200 OK
+< Access-Control-Allow-Credentials: true
+< Access-Control-Allow-Headers: Content-Type,Authorization,X-User-Agent
+< Access-Control-Allow-Methods: GET,OPTIONS
+< Access-Control-Allow-Origin: *
+< Access-Control-Expose-Headers: Content-Type,Warning
+< Access-Control-Max-Age: 600
+< Content-Length: 487152
+< Content-Type: application/json
+< Date: Sun, 01 Oct 2017 16:43:23 GMT
+< Expires: Sun, 01 Oct 2017 16:53:22 GMT
+< Last-Modified: Sun, 01 Oct 2017 16:43:22 GMT
+< Strict-Transport-Security: max-age=31536000
+< Vary: Accept-Encoding
+< X-Esi-Error-Limit-Remain: 98
+< X-Esi-Error-Limit-Reset: 39
+< X-Pages: 1
+< Via: 1.1 google
+< Cache-Control: public
+< Age: 349
+< Alt-Svc: clear
+< 
+* Connection #0 to host esi.tech.ccp.is left intact

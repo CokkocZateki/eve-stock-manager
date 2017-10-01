@@ -11,6 +11,7 @@
 |
 */
 
+// Master route.
 Route::get('/', 'AppController@home');
 
 // Handle EVE SSO requests and callbacks.

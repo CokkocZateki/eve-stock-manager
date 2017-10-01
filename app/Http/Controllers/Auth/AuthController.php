@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Socialite;
 use Illuminate\Support\Facades\Auth;
 use App\User;
@@ -10,13 +11,13 @@ use App\User;
 class AuthController extends Controller
 {
     /**
-     * Redirect the user to the EVE Online SSO page.
+     * Redirect the user to the EVE Online SSO page and ask for permission to search corporation assets.
      *
      * @return Response
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('eveonline')->redirect();
+        return Socialite::driver('eveonline')->scopes(['esi-assets.read_corporation_assets.v1'])->redirect();
     }
 
     /**
@@ -24,7 +25,7 @@ class AuthController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback(Request $request)
     {
         $user = Socialite::driver('eveonline')->user();
 
@@ -63,6 +64,8 @@ class AuthController extends Controller
      private function findOrCreateUser($user)
      {
          if ($authUser = User::where('eve_id', $user->id)->first()) {
+             $authUser->token = $user->token;
+             $authUser->save();
              return $authUser;
          }
  
